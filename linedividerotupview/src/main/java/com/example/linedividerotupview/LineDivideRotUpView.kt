@@ -187,4 +187,27 @@ class LineDivideRotUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineDivideRotUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ldru : LineDivideRotUp = LineDivideRotUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ldru.draw(canvas, paint)
+            animator.animate {
+                ldru.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ldru.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
