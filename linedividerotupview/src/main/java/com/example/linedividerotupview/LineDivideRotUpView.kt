@@ -212,4 +212,12 @@ class LineDivideRotUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineDivideRotUpView {
+            val view : LineDivideRotUpView = LineDivideRotUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
