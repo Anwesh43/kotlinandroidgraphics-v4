@@ -44,9 +44,9 @@ fun Canvas.drawLineDivideRotUp(scale : Float, w : Float, h : Float, paint : Pain
     drawXY(w / 2, h / 2 - (h / 2) * dsc(3)) {
         rotate(rot * dsc(2))
         drawLine(0f, 0f, 0f, -size * dsc(0), paint)
-        val gap : Float = size / (lines - 1)
-        for (j in 0..(lines + 1)) {
-            drawXY(-(w / 2) * (1 - dsc(1).divideScale(j, lines)), -size + gap * j) {
+        val gap : Float = size / (lines + 1)
+        for (j in 0..lines + 1) {
+            drawXY(-(w / 2) * (1 - dsc(1).divideScale(j, lines + 2)), -size + gap * j) {
                 drawLine(0f, 0f, -size, 0f, paint)
             }
         }
@@ -59,6 +59,7 @@ fun Canvas.drawLDRUNode(i : Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    drawLineDivideRotUp(scale, w, h, paint)
 }
 
 class LineDivideRotUpView(ctx : Context) : View(ctx) {
