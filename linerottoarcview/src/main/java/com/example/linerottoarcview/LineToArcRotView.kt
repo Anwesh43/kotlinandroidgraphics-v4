@@ -213,4 +213,13 @@ class LineToArcRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineToArcRotView {
+            val view : LineToArcRotView = LineToArcRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
