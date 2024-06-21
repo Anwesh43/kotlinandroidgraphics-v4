@@ -11,13 +11,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.bilinedroprotview.BiLineDropRotView
 import com.example.graphicskotlinproject4.ui.theme.GraphicsKotlinProject4Theme
-import com.example.linerottoarcview.LineToArcRotView
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
-        LineToArcRotView.create(this)
+        BiLineDropRotView.create(this)
     }
 }
