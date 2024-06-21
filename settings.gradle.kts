@@ -23,3 +23,4 @@ rootProject.name = "GraphicsKotlinProject4"
 include(":app")
 include(":linedividerotupview")
 include(":linerottoarcview")
+include(":bilinedroprotview")
