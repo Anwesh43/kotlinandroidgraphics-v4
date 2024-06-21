@@ -186,4 +186,27 @@ class BiLineDropRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiLineDropRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bldr : BiLineDropRot = BiLineDropRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bldr.draw(canvas, paint)
+            animator.animate {
+                bldr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bldr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
