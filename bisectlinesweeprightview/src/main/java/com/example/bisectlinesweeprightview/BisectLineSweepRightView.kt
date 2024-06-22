@@ -23,7 +23,7 @@ val sizeFactor : Float = 4.9f
 val delay : Long = 20
 val backColor : Int = Color.parseColor("#BDBDBD")
 val rot : Float = 60f
-val rFactor : Float = 8.9f
+val rFactor : Float = 4.9f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -47,11 +47,13 @@ fun Canvas.drawBisectLineSweepRight(scale : Float, w : Float, h : Float, paint :
             drawXY(size / 2, 0f) {
                 scale(1f - 2 * j, 1f - 2 * j)
                 drawXY(-size / 2, 0f) {
-                    drawXY(0f, 0f) {
-                        rotate(-rot * dsc(1))
-                        drawLine(0f, 0f, size * dsc(0), 0f, paint)
+                    for (k in 0..1) {
+                        drawXY(0f, 0f) {
+                            rotate(-rot * dsc(1) * k)
+                            drawLine(0f, 0f, size * dsc(0), 0f, paint)
+                        }
+                        drawArc(RectF(-r, -r, r, r), -rot * dsc(1), rot * dsc(1), false, paint)
                     }
-                    drawArc(RectF(-r, -r, r, r), -rot * dsc(1), rot * dsc(1), false, paint)
                 }
             }
         }
