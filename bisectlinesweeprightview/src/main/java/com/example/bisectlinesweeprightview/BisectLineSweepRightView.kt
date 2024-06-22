@@ -219,4 +219,12 @@ class BisectLineSweepRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BisectLineSweepRightView {
+            val view : BisectLineSweepRightView = BisectLineSweepRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
