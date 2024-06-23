@@ -40,7 +40,7 @@ fun Canvas.drawLineArcCompleteUp(scale : Float, w : Float, h : Float, paint : Pa
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - (w / 2) * dsc(3), h / 2) {
+    drawXY(w / 2 - (w / 2 + size / 2) * dsc(3), h / 2) {
         rotate(rot * dsc(2))
         drawLine(
             0f,
