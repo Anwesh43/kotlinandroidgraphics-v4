@@ -224,4 +224,13 @@ class LineArcCompleteUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineArcCompleteUpView {
+            val view : LineArcCompleteUpView = LineArcCompleteUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
