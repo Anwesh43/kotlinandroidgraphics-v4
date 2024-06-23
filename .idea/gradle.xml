@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/bilinedroprotview" />
+            <option value="$PROJECT_DIR$/bisectlinesweeprightview" />
+            <option value="$PROJECT_DIR$/linearccompleteupview" />
             <option value="$PROJECT_DIR$/linedividerotupview" />
             <option value="$PROJECT_DIR$/linerottoarcview" />
           </set>
