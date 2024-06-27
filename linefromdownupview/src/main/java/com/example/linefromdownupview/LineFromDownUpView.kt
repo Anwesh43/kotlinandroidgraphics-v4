@@ -184,4 +184,27 @@ class LineFromDownUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineFromDownUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val lfdu : LineFromDownUp = LineFromDownUp(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lfdu.draw(canvas, paint)
+            animator.animate {
+                lfdu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lfdu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
