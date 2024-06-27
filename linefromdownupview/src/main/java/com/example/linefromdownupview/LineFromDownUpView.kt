@@ -209,4 +209,13 @@ class LineFromDownUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineFromDownUpView {
+            val view : LineFromDownUpView = LineFromDownUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
