@@ -12,13 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.graphicskotlinproject4.ui.theme.GraphicsKotlinProject4Theme
-import com.example.linerotsqleftview.LineRotSqLeftView
+import com.example.linefromdownupview.LineFromDownUpView
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
-        LineRotSqLeftView.create(this)
+        LineFromDownUpView.create(this)
     }
 }
