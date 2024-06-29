@@ -12,13 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.graphicskotlinproject4.ui.theme.GraphicsKotlinProject4Theme
-import com.example.linefromdownupview.LineFromDownUpView
+import com.example.linewitharcrotview.LineWithArcRotView
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
-        LineFromDownUpView.create(this)
+        LineWithArcRotView.create(this)
     }
 }
