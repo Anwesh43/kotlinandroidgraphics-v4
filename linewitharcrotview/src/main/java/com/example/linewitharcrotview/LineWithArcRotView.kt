@@ -21,7 +21,7 @@ val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 4.9f
 val delay : Long = 20
-val bacKColor : Int = Color.parseColor("#BDBDBD")
+val backColor : Int = Color.parseColor("#BDBDBD")
 val rot : Float = 90f
 
 fun Int.inverse() : Float = 1f / this
@@ -183,6 +183,29 @@ class LineWithArcRotView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineWithArcRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lwar : LineWithArcRot = LineWithArcRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lwar.draw(canvas, paint)
+            animator.animate {
+                lwar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lwar.startUpdating {
+                animator.start()
+            }
         }
     }
 }
