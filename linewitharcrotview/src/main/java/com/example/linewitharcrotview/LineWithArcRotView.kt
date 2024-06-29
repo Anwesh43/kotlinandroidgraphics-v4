@@ -210,4 +210,12 @@ class LineWithArcRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineWithArcRotView {
+            val view : LineWithArcRotView = LineWithArcRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
