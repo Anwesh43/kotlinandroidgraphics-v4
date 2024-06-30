@@ -186,4 +186,27 @@ class LineBentSqUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBentSqUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val lbsu : LineBentSqUp = LineBentSqUp(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbsu.draw(canvas, paint)
+            animator.animate {
+                lbsu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbsu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
