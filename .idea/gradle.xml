@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/linefromdownupview" />
             <option value="$PROJECT_DIR$/linerotsqleftview" />
             <option value="$PROJECT_DIR$/linerottoarcview" />
+            <option value="$PROJECT_DIR$/linewitharcrotview" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
