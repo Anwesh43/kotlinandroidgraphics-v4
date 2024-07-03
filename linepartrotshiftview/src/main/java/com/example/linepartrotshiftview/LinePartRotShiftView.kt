@@ -27,3 +27,32 @@ fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawLinePartRotShift(w : Float, h : Float, scale : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    val afterScale1 = Math.floor(dsc(1).toDouble()).toFloat()
+    drawXY(w / 2 + (w / 2) * dsc(3), h / 2) {
+        drawXY(-size + size * afterScale1, 0f) {
+            rotate(rot * dsc(1) - rot * 2 * afterScale1 + 2 * rot * dsc(2))
+            drawLine(0f, 0f, 0f, -size * dsc(0), paint)
+        }
+    }
+}
+
+fun Canvas.drawLPRSNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = Color.parseColor(colors[i])
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    drawLinePartRotShift(w, h, scale, paint)
+}
