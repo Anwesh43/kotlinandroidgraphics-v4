@@ -210,4 +210,13 @@ class AltBiRotUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : AltBiRotUpView {
+            val view : AltBiRotUpView = AltBiRotUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
