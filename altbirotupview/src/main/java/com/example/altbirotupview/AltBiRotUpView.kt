@@ -16,10 +16,10 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 4
-val scGap : Float = 0.04f / parts
-val sizeFactor : Float = 90f
-val rot : Float = 180f
+val parts : Int = 3
+val scGap : Float = 0.03f / parts
+val sizeFactor : Float = 4.9f
+val rot : Float = -180f
 val delay : Long = 20
 val backColor : Int = Color.parseColor("#BDBDBD")
 
