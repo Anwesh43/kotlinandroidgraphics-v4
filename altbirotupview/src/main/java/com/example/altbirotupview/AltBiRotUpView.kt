@@ -185,4 +185,27 @@ class AltBiRotUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : AltBiRotUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val abru : AltBiRotUp = AltBiRotUp(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            abru.draw(canvas, paint)
+            animator.animate {
+                abru.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            abru.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
