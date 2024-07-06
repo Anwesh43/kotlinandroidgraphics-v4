@@ -121,4 +121,45 @@ class AltBiRotUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class ABRUNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : ABRUNode? = null
+        private var prev : ABRUNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = ABRUNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawABRUNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : ABRUNode {
+            var curr : ABRUNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
