@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/altbirotupview" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/bilinedroprotview" />
             <option value="$PROJECT_DIR$/bisectlinesweeprightview" />
