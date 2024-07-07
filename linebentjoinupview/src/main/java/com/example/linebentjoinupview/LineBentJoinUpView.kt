@@ -45,6 +45,10 @@ fun Canvas.drawLineBentJoinUp(scale : Float, w : Float, h : Float, paint : Paint
             rotate(deg * (1 - dsc(2)))
             drawLine(0f, -size * (1 - dsc(0)), 0f, -size, paint)
         }
+        drawXY(0f, 0f) {
+            rotate(rot * (1 - dsc(2)))
+            drawLine(0f, 0f, 0f, -size * dsc(1), paint)
+        }
     }
 }
 
