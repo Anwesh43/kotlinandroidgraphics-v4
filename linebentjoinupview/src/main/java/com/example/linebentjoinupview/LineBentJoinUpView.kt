@@ -205,4 +205,12 @@ class LineBentJoinUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineBentJoinUpView {
+            val view : LineBentJoinUpView = LineBentJoinUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
