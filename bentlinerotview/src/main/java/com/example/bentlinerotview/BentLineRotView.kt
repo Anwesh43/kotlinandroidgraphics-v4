@@ -210,4 +210,12 @@ class BentLineRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BentLineRotView {
+            val view : BentLineRotView = BentLineRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
