@@ -67,7 +67,9 @@ class BentLineRotView(ctx : Context) : View(ctx) {
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
-            MotionEvent.ACTION_DOWN
+            MotionEvent.ACTION_DOWN -> {
+
+            }
         }
         return true
     }
@@ -117,6 +119,47 @@ class BentLineRotView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class BLRNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : BLRNode? = null
+        private var prev : BLRNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = BLRNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawBLRNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : BLRNode {
+            var curr : BLRNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
