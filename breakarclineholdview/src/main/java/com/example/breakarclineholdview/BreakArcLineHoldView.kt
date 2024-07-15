@@ -188,4 +188,27 @@ class BreakArcLineHoldView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BreakArcLineHoldView) {
+
+        private val animator : Animator = Animator(view)
+        private val balh : BreakArcLineHold = BreakArcLineHold(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            balh.draw(canvas, paint)
+            animator.animate {
+                balh.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            balh.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
