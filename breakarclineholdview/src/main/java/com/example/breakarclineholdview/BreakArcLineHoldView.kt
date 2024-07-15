@@ -213,4 +213,12 @@ class BreakArcLineHoldView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BreakArcLineHoldView {
+            val view : BreakArcLineHoldView = BreakArcLineHoldView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
