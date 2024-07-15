@@ -45,7 +45,7 @@ fun Canvas.drawBentLineRot(scale : Float, w : Float, h : Float, paint : Paint) {
         drawLine(0f, 0f, -size * dsc(0), 0f, paint)
         drawXY(-size / 2, 0f) {
             rotate(deg)
-            drawLine(0f, 0f, 0f, -size * dsc(1), paint)
+            drawLine(0f, 0f, 0f, -size * Math.cos(deg * Math.PI / 180).toFloat() * dsc(1), paint)
         }
     }
 }
