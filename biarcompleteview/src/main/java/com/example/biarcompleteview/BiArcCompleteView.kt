@@ -214,4 +214,12 @@ class BiArcCompleteView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiArcCompleteView {
+            val view : BiArcCompleteView = BiArcCompleteView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
