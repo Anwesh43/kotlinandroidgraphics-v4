@@ -189,4 +189,27 @@ class BiArcCompleteView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiArcCompleteView) {
+
+        private val animator : Animator = Animator(view)
+        private val bac : BiArcComplete = BiArcComplete(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bac.draw(canvas, paint)
+            animator.animate {
+                bac.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bac.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
