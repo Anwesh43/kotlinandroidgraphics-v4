@@ -44,9 +44,9 @@ fun Canvas.drawBiArcComplete(scale : Float, w : Float, h : Float, paint : Paint)
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f - 2 * j)
-                drawXY(0f, (h / 2 + size / 2) * dsc(j + 2)) {
+                drawXY(size * 0.5f * (1 - dsc(1)), (h / 2 + size / 2) * dsc(j + 2)) {
                     rotate(rot * dsc(1))
-                    drawArc(RectF(0f, -size / 2, size, size / 2), 90f, rot * dsc(0), false, paint)
+                    drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 90f, rot * dsc(0), false, paint)
                 }
             }
         }
