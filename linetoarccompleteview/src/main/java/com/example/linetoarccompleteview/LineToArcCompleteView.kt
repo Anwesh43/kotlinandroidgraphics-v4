@@ -190,4 +190,27 @@ class LineToArcCompleteView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineToArcCompleteView) {
+
+        private val animator : Animator = Animator(view)
+        private val ltac : LineToArcComplete = LineToArcComplete(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ltac.draw(canvas, paint)
+            animator.animate {
+                ltac.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ltac.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
