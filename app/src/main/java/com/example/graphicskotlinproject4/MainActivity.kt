@@ -11,13 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.biarcompleteview.BiArcCompleteView
+import com.example.linetoarccompleteview.LineToArcCompleteView
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
-        BiArcCompleteView.create(this)
+        LineToArcCompleteView.create(this)
     }
 }
