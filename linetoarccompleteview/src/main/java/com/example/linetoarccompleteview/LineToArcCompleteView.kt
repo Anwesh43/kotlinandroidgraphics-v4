@@ -215,4 +215,13 @@ class LineToArcCompleteView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : LineToArcCompleteView {
+            val view : LineToArcCompleteView = LineToArcCompleteView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
