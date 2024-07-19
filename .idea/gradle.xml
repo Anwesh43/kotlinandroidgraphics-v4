@@ -23,9 +23,11 @@
             <option value="$PROJECT_DIR$/linedividerotupview" />
             <option value="$PROJECT_DIR$/linefromdownupview" />
             <option value="$PROJECT_DIR$/linepartrotshiftview" />
+            <option value="$PROJECT_DIR$/linerotintoarcview" />
             <option value="$PROJECT_DIR$/linerotmoresqview" />
             <option value="$PROJECT_DIR$/linerotsqleftview" />
             <option value="$PROJECT_DIR$/linerottoarcview" />
+            <option value="$PROJECT_DIR$/linetoarccompleteview" />
             <option value="$PROJECT_DIR$/linewitharcrotview" />
           </set>
         </option>
