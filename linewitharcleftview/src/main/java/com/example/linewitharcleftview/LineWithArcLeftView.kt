@@ -183,4 +183,27 @@ class LineWithArcLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineWithArcLeftView){
+
+        private val animator : Animator = Animator(view)
+        private val lwal : LineWithArcLeft = LineWithArcLeft(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lwal.draw(canvas, paint)
+            animator.animate {
+                lwal.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lwal.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
