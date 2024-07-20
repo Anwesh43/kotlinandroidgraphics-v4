@@ -40,7 +40,7 @@ fun Canvas.drawLineWithArcLeft(scale : Float, w : Float, h : Float, paint : Pain
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - (w / 2) * dsc(3), h / 2) {
+    drawXY(w / 2 - (w / 2) * dsc(4), h / 2) {
         rotate(rot * dsc(2))
         drawLine(0f, 0f, 0f, size * dsc(0), paint)
         drawArc(RectF(-size / 2, 0f, size / 2, size), 90f, 180f * (dsc(1) + dsc(3)), false, paint)
@@ -53,6 +53,7 @@ fun Canvas.drawLWALNode(i : Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineWithArcLeft(scale, w, h, paint)
 }
 
