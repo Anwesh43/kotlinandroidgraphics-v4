@@ -62,14 +62,16 @@ fun Canvas.drawSRFANode(i : Int, scale : Float, paint : Paint) {
 
 class SqRotFromArcView(ctx : Context) : View(ctx) {
 
-    override fun onDraw(canvas : Canvas) {
+    private val renderer : Renderer = Renderer(this)
 
+    override fun onDraw(canvas : Canvas) {
+        renderer.render(canvas)
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                renderer.handleTap()
             }
         }
         return true
@@ -189,7 +191,7 @@ class SqRotFromArcView(ctx : Context) : View(ctx) {
 
     data class Renderer(var view : SqRotFromArcView) {
 
-        private val animator : Animator = Animator(this)
+        private val animator : Animator = Animator(view)
         private val srfa : SqRotFromArc = SqRotFromArc(0)
         private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
