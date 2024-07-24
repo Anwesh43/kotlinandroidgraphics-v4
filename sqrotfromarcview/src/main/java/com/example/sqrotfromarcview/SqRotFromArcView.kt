@@ -211,4 +211,12 @@ class SqRotFromArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : SqRotFromArcView {
+            val view : SqRotFromArcView = SqRotFromArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
