@@ -186,4 +186,27 @@ class SqRotFromArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SqRotFromArcView) {
+
+        private val animator : Animator = Animator(this)
+        private val srfa : SqRotFromArc = SqRotFromArc(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            srfa.draw(canvas, paint)
+            animator.animate {
+                srfa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            srfa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
