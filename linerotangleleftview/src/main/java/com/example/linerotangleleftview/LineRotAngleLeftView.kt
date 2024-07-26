@@ -211,4 +211,12 @@ class LineRotAngleLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineRotAngleLeftView {
+            val view : LineRotAngleLeftView = LineRotAngleLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
