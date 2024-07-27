@@ -212,4 +212,13 @@ class LineRotSqHolderView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : LineRotSqHolderView {
+            val view : LineRotSqHolderView = LineRotSqHolderView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
