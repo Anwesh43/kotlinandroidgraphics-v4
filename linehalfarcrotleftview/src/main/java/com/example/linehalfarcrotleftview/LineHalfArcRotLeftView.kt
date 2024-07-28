@@ -19,7 +19,7 @@ val colors : Array<String> = arrayOf(
 val parts : Int = 4
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
-val rot : Float = 90f
+val rot : Float = 180f
 val backColor : Int = Color.parseColor("#BDBDBD")
 val delay : Long = 20
 val sizeFactor : Float = 4.9f
@@ -41,7 +41,7 @@ fun Canvas.drawLineHalfArcRotLeft(scale : Float, w : Float, h : Float, paint : P
         scale.divideScale(it, parts)
     }
     drawXY(w / 2 - (w / 2) * dsc(3), h / 2) {
-        drawLine(-size + size * dsc(0), 0f, 0f, 0f, paint)
+        drawLine(-size, 0f, -size + size * dsc(0), 0f, paint)
         drawXY(0f, 0f) {
             rotate(rot * dsc(2))
             drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(1), false, paint)
@@ -55,6 +55,7 @@ fun Canvas.drawLHARLNode(i: Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineHalfArcRotLeft(scale, w, h, paint)
 }
 
