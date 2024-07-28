@@ -206,4 +206,13 @@ class LineHalfArcBreakView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : LineHalfArcBreakView {
+            val view : LineHalfArcBreakView = LineHalfArcBreakView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
