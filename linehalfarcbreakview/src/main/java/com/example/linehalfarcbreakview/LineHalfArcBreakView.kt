@@ -113,7 +113,7 @@ class LineHalfArcBreakView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun sop() {
+        fun stop() {
             if (animated) {
                 animated = false
             }
@@ -181,6 +181,29 @@ class LineHalfArcBreakView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineHalfArcBreakView) {
+
+        private val animator : Animator = Animator(view)
+        private val lhab : LineHalfArcBreak = LineHalfArcBreak(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lhab.draw(canvas, paint)
+            animator.animate {
+                lhab.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lhab.startUpdating {
+                animator.start()
+            }
         }
     }
 }
