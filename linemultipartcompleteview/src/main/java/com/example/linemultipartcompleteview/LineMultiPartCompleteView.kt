@@ -184,4 +184,27 @@ class LineMultiPartCompleteView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineMultiPartCompleteView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lmpc : LineMultiPartComplete = LineMultiPartComplete(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lmpc.draw(canvas, paint)
+            animator.animate {
+                lmpc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lmpc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
