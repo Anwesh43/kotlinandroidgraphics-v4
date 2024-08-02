@@ -11,14 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.linehalfarcrotleftview.LineHalfArcRotLeftView
-
+import com.example.linemultipartcompleteview.LineMultiPartCompleteView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
-        LineHalfArcRotLeftView.create(this)
+        LineMultiPartCompleteView.create(this)
 
     }
 }
