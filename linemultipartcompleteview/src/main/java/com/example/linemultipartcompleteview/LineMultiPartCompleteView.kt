@@ -208,4 +208,12 @@ class LineMultiPartCompleteView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineMultiPartCompleteView {
+            val view : LineMultiPartCompleteView = LineMultiPartCompleteView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
