@@ -212,4 +212,13 @@ class ArcLineCompleteJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : ArcLineCompleteJoinView {
+            val view : ArcLineCompleteJoinView = ArcLineCompleteJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
