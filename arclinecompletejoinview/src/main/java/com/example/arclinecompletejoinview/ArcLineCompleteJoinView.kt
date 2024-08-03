@@ -48,7 +48,7 @@ fun Canvas.drawArcLineCompleteJoin(scale : Float, w : Float, h : Float, paint : 
             false,
             paint
         )
-        drawLine(0f, -size * (1 - dsc(2)), 0f, -size * (1 - dsc(3)), paint)
+        drawLine(0f, size * 0.5f * (1 - dsc(2)), 0f, size * 0.5f * (1 - dsc(3)), paint)
     }
 }
 
