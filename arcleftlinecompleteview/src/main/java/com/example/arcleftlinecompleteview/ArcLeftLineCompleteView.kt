@@ -118,4 +118,45 @@ class ArcLeftLineCompleteView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class ALLCNode(var i : Int = 0, private val state : State = State()) {
+
+        private var next : ALLCNode? = null
+        private var prev : ALLCNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size -1) {
+                next = ALLCNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawALLCNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : ALLCNode {
+            var curr : ALLCNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
