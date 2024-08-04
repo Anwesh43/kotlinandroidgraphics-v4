@@ -41,7 +41,7 @@ fun Canvas.drawArcLeftLineComplete(scale : Float, w : Float, h : Float, paint : 
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2) {
-        drawLine(0f, size * (1 - dsc(0)), 0f, size * (1 - dsc(1)), paint)
+        drawLine( size * (1 - dsc(0)), 0f, size * (1 - dsc(1)), 0f, paint)
         drawArc(RectF(-size, -size / 2, 0f, size / 2), rot * dsc(3), rot * (dsc(2) - dsc(3)), false, paint)
     }
 }
@@ -52,6 +52,7 @@ fun Canvas.drawALLCNode(i : Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawArcLeftLineComplete(scale, w, h, paint)
 }
 
