@@ -182,4 +182,27 @@ class ArcLeftLineCompleteView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcLeftLineCompleteView) {
+
+        private val animator : Animator = Animator(view)
+        private val allc : ArcLeftLineComplete = ArcLeftLineComplete(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            allc.draw(canvas, paint)
+            animator.animate {
+                allc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            allc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
