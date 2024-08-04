@@ -207,4 +207,13 @@ class ArcLeftLineCompleteView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : ArcLeftLineCompleteView {
+            val view : ArcLeftLineCompleteView = ArcLeftLineCompleteView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
