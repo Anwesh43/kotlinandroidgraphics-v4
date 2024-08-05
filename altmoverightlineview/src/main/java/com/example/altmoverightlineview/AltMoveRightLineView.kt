@@ -210,4 +210,13 @@ class AltMoveRightLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : AltMoveRightLineView {
+            val view : AltMoveRightLineView = AltMoveRightLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
