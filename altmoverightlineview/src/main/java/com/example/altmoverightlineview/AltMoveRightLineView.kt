@@ -22,7 +22,7 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 4.9f
 val delay : Long = 20
 val backColor : Int = Color.parseColor("#BDBDBD")
-val rot : Float = 90f
+val rot : Float = 180f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -36,15 +36,21 @@ fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
 }
 
 fun Canvas.drawAltMoveRightLine(scale : Float, w : Float, h : Float, paint : Paint) {
-    val size : Float = Math.min(w, h) / sizeFactor
-    val dsc : (Int) -> Float = {
+    val size: Float = Math.min(w, h) / sizeFactor
+    val dsc: (Int) -> Float = {
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
-            drawXY(-w * 0.5f * (1 - dsc(0) + dsc(3)) * j, -h * 0.5f * (1 - dsc(0) + dsc(3)) * (1 - j)) {
+            drawXY(0f, 0f) {
                 rotate(rot * dsc(1 + j))
-                drawLine(0f, 0f, -size * j, -size * (1 - j), paint)
+                drawXY(
+                    -w * 0.5f * (1 - dsc(0) + dsc(3)) * j,
+                    -h * 0.5f * (1 - dsc(0) + dsc(3)) * (1 - j)
+                ) {
+
+                    drawLine(0f, 0f, -size * j, -size * (1 - j), paint)
+                }
             }
         }
     }
