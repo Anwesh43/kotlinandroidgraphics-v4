@@ -185,4 +185,27 @@ class AltMoveRightLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : AltMoveRightLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val amrl : AltMoveRightLine = AltMoveRightLine(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            amrl.draw(canvas, paint)
+            animator.animate {
+                amrl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            amrl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
