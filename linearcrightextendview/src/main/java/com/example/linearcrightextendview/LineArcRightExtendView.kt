@@ -42,10 +42,10 @@ fun Canvas.drawLineArcRightExtend(scale : Float, w : Float, h : Float, paint : P
     }
     drawXY(w / 2 + (w / 2) * dsc(3), h / 2) {
         drawXY(0f, 0f) {
-            rotate(-rot * dsc(2))
-            drawArc(RectF(-size, -size / 2, 0f, size / 2), 90f, 180f * dsc(0), false, paint)
+            rotate(rot * dsc(2))
+            drawArc(RectF(-size / 2, 0f, size / 2, size), 90f, 180f * dsc(0), false, paint)
         }
-        drawLine(0f, 0f, size * dsc(0), 0f, paint)
+        drawLine(0f, 0f, size * dsc(1), 0f, paint)
     }
 }
 
