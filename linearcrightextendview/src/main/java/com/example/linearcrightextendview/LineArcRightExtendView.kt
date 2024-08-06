@@ -210,4 +210,12 @@ class LineArcRightExtendView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineArcRightExtendView {
+            val view : LineArcRightExtendView = LineArcRightExtendView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
