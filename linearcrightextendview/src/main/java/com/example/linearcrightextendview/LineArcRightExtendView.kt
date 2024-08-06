@@ -185,4 +185,27 @@ class LineArcRightExtendView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineArcRightExtendView) {
+
+        private val curr : LineArcRightExtend = LineArcRightExtend(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            curr.draw(canvas, paint)
+            animator.animate {
+                curr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            curr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
