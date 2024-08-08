@@ -22,6 +22,7 @@
             <option value="$PROJECT_DIR$/halfarcrotfullview" />
             <option value="$PROJECT_DIR$/linearccompleteupview" />
             <option value="$PROJECT_DIR$/linearcrightextendview" />
+            <option value="$PROJECT_DIR$/linebentjoindownview" />
             <option value="$PROJECT_DIR$/linebentjoinupview" />
             <option value="$PROJECT_DIR$/linebentsqupview" />
             <option value="$PROJECT_DIR$/linedividerotupview" />
@@ -40,6 +41,7 @@
             <option value="$PROJECT_DIR$/linewitharcleftview" />
             <option value="$PROJECT_DIR$/linewitharcrotview" />
             <option value="$PROJECT_DIR$/sqrotfromarcview" />
+            <option value="$PROJECT_DIR$/startcompleterotarcview" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
