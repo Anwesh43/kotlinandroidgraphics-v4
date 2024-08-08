@@ -187,4 +187,27 @@ class StartCompleteArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : StartCompleteArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val sca : StartCompleteArc = StartCompleteArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            sca.draw(canvas, paint)
+            animator.animate {
+                sca.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            sca.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
