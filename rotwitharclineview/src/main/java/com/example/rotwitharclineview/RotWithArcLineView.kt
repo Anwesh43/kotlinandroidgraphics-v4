@@ -184,4 +184,27 @@ class RotWithArcLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RotWithArcLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rwal : RotWithArcLine = RotWithArcLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rwal.draw(canvas, paint)
+            animator.animate {
+                rwal.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rwal.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
