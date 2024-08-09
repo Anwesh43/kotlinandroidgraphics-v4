@@ -209,4 +209,13 @@ class RotWithArcLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : RotWithArcLineView {
+            val view : RotWithArcLineView = RotWithArcLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
