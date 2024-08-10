@@ -43,7 +43,7 @@ fun Canvas.drawRotArcQuarterLine(scale : Float, w : Float, h : Float, paint : Pa
     drawXY(w / 2 - (w / 2) * dsc(3), h / 2) {
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(rot * (1 - dsc(2)))
+                rotate(rot * (1 - dsc(2)) * (1f - 2 * j))
                 drawLine(0f, 0f, -size * dsc(0), 0f, paint)
             }
         }
@@ -63,14 +63,15 @@ fun Canvas.drawRAQLNode(i : Int, scale : Float, paint : Paint) {
 
 class RotArcQuarterLineView(ctx : Context) : View(ctx) {
 
+    private val renderer : Renderer = Renderer(this)
     override fun onDraw(canvas : Canvas) {
-
+        renderer.render(canvas)
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                renderer.handleTap()
             }
         }
         return true
