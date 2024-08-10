@@ -186,4 +186,27 @@ class RotArcQuarterLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RotArcQuarterLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val raql : RotArcQuarterLine = RotArcQuarterLine(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            raql.draw(canvas, paint)
+            animator.animate {
+                raql.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            raql.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
