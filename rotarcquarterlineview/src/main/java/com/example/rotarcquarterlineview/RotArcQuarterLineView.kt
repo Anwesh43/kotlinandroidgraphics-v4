@@ -25,7 +25,7 @@ val sizeFactor : Float = 4.9f
 val strokeFactor : Float = 90f
 
 fun Int.inverse() : Float = 1f / this
-fun Float.maxScale(i : Int, n : Int) : Float = 1f / this
+fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 
 fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
@@ -44,7 +44,7 @@ fun Canvas.drawRotArcQuarterLine(scale : Float, w : Float, h : Float, paint : Pa
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 rotate(rot * (1 - dsc(2)) * (1f - 2 * j))
-                drawLine(0f, 0f, -size * dsc(0), 0f, paint)
+                drawLine((1 - j) * (-size * (1 - dsc(1).divideScale(0, 2))), 0f, -size * (dsc(1).divideScale(j, 2) * j + (1 - j)), 0f, paint)
             }
         }
         drawArc(RectF(-size, -size, size, size), 90f + rot * dsc(2), 180f * (dsc(0) - dsc(2)), false, paint)
