@@ -209,4 +209,12 @@ class RotArcQuarterLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : RotArcQuarterLineView {
+            val view : RotArcQuarterLineView = RotArcQuarterLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
