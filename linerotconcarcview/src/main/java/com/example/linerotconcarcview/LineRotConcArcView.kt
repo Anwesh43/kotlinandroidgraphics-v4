@@ -213,4 +213,13 @@ class LineRotConcArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : LineRotConcArcView {
+            val view : LineRotConcArcView = LineRotConcArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
