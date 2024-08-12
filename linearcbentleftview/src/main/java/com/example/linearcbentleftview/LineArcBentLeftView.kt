@@ -212,4 +212,12 @@ class LineArcBentLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineArcBentLeftView {
+            val view : LineArcBentLeftView = LineArcBentLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
