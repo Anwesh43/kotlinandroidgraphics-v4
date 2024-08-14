@@ -21,7 +21,7 @@ val strokeFactor : Float = 90f
 val delay : Long = 20
 val rot : Float = 90f
 val backColor : Int = Color.parseColor("#BDBDBD")
-val parts : Int = 4
+val parts : Int = 6
 val scGap : Float = 0.04f / parts
 
 fun Int.inverse() : Float = 1f / this
@@ -40,11 +40,17 @@ fun Canvas.drawLineCompleteLeftArc(scale : Float, w : Float, h : Float, paint : 
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 + (w / 2) * dsc(3), h / 2) {
+    drawXY(w / 2 + (w / 2) * dsc(5), h / 2) {
         drawLine(0f, 0f, size * dsc(0), 0f, paint)
+        paint.style = Paint.Style.STROKE
         drawXY(size, 0f) {
             rotate(-rot * dsc(2))
             drawArc(RectF(0f, -size / 2, size, size / 2), 180f * (1 - dsc(1)), 180f * dsc(1), false, paint)
+        }
+        paint.style = Paint.Style.FILL
+        drawXY(size, 0f) {
+            drawArc(RectF(-size / 2, -size, size / 2, 0f), -90f, 180f * dsc(3), true, paint)
+            drawRect(RectF(-size * dsc(4), -size / 2, 0f, 0f), paint)
         }
     }
 }
@@ -54,6 +60,8 @@ fun Canvas.drawLCLANode(i : Int, scale : Float, paint : Paint) {
     val h : Float = height.toFloat()
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineCompleteLeftArc(scale, w, h, paint)
 }
 
