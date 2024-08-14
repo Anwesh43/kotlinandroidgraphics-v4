@@ -184,4 +184,26 @@ class LineCompleteLeftArcView(ctx : Context) : View(ctx) {
         }
     }
 
+    data class Renderer(var view : LineCompleteLeftArcView) {
+
+        private val lcla : LineCompleteLeftArc = LineCompleteLeftArc(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lcla.draw(canvas, paint)
+            animator.animate {
+                lcla.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lcla.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
