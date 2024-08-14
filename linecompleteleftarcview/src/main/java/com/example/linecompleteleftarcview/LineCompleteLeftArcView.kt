@@ -49,7 +49,7 @@ fun Canvas.drawLineCompleteLeftArc(scale : Float, w : Float, h : Float, paint : 
     }
 }
 
-fun Canvas.drrawLCLANode(i : Int, scale : Float, paint : Paint) {
+fun Canvas.drawLCLANode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
     paint.color = Color.parseColor(colors[i])
@@ -117,6 +117,47 @@ class LineCompleteLeftArcView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class LCLANode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LCLANode? = null
+        private var prev : LCLANode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LCLANode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLCLANode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LCLANode {
+            var curr : LCLANode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
