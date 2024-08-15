@@ -212,4 +212,13 @@ class MirrorArcLineDivideView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : MirrorArcLineDivideView {
+            val view : MirrorArcLineDivideView = MirrorArcLineDivideView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
