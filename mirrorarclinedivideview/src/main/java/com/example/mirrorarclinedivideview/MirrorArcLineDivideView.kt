@@ -187,4 +187,27 @@ class MirrorArcLineDivideView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : MirrorArcLineDivideView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val mald : MirrorArcLineDivide = MirrorArcLineDivide(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            mald.draw(canvas, paint)
+            animator.animate {
+                mald.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            mald.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
