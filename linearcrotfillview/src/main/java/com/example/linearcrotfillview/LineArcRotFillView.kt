@@ -49,8 +49,8 @@ fun Canvas.drawLineArcRotFill(scale : Float, w : Float, h : Float, paint : Paint
         drawXY(-size, 0f) {
             drawLine(0f, 0f, size * dsc(0), 0f, paint)
         }
-        paint.style = Paint.Style.STROKE
-        drawArc(RectF(0f, 0f, size, size), 90f, 180f * dsc(3), true, paint)
+        paint.style = Paint.Style.FILL
+        drawArc(RectF(-size / 2, 0f, size / 2, size), 90f, 180f * dsc(3), true, paint)
     }
 }
 
