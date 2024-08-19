@@ -213,4 +213,12 @@ class LineTriFormRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineTriFormRotView {
+            val view : LineTriFormRotView = LineTriFormRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
