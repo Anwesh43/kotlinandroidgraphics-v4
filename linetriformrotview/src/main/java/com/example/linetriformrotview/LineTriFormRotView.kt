@@ -43,7 +43,7 @@ fun Canvas.drawLineTriForm(scale : Float, w : Float, h : Float, paint : Paint) {
         rotate(rot * dsc(3))
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(rot * j * dsc(1))
+                rotate(-rot * j * dsc(1))
                 drawLine(0f, 0f, size * dsc(0), 0f, paint)
             }
         }
