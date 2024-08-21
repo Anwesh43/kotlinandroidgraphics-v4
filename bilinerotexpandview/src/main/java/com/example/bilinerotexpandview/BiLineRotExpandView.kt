@@ -192,4 +192,27 @@ class BiLineRotExpandView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiLineRotExpandView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blre : BiLineRotExpand = BiLineRotExpand(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blre.draw(canvas, paint)
+            animator.animate {
+                blre.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blre.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
