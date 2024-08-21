@@ -217,4 +217,12 @@ class BiLineRotExpandView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiLineRotExpandView {
+            val view : BiLineRotExpandView = BiLineRotExpandView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
