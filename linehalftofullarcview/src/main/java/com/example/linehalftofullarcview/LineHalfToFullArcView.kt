@@ -127,4 +127,45 @@ class LineHalfToFullArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class LHTFANode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LHTFANode? = null
+        private var prev : LHTFANode? = null
+
+        init {
+
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LHTFANode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLHTFANode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LHTFANode {
+            var curr : LHTFANode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
