@@ -66,3 +66,17 @@ fun Canvas.drawLHTFANode(i : Int, scale : Float, paint : Paint) {
     paint.style = Paint.Style.STROKE
     drawLineHalfToFullArc(scale, w, h, paint)
 }
+
+class LineHalfToFullArcView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+
+        }
+        return true
+    }
+}
