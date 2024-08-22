@@ -138,7 +138,7 @@ class LineHalfToFullArcView(ctx : Context) : View(ctx) {
         private var prev : LHTFANode? = null
 
         init {
-
+            addNeighbor()
         }
 
         fun addNeighbor() {
