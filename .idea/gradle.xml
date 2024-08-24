@@ -17,6 +17,8 @@
             <option value="$PROJECT_DIR$/bentlinerotview" />
             <option value="$PROJECT_DIR$/biarcompleteview" />
             <option value="$PROJECT_DIR$/bilinedroprotview" />
+            <option value="$PROJECT_DIR$/bilinerotexpandview" />
+            <option value="$PROJECT_DIR$/birotfillarcview" />
             <option value="$PROJECT_DIR$/bisectlinesweeprightview" />
             <option value="$PROJECT_DIR$/breakarclineholdview" />
             <option value="$PROJECT_DIR$/halfarcrotfullview" />
@@ -32,6 +34,7 @@
             <option value="$PROJECT_DIR$/linefromdownupview" />
             <option value="$PROJECT_DIR$/linehalfarcbreakview" />
             <option value="$PROJECT_DIR$/linehalfarcrotleftview" />
+            <option value="$PROJECT_DIR$/linehalftofullarcview" />
             <option value="$PROJECT_DIR$/linemultipartcompleteview" />
             <option value="$PROJECT_DIR$/linepartrotshiftview" />
             <option value="$PROJECT_DIR$/linerotangleleftview" />
