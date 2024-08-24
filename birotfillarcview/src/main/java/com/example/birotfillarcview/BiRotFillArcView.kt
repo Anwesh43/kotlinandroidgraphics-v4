@@ -172,7 +172,7 @@ class BiRotFillArcView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class BiRtoFillArc(var i : Int = 0) {
+    data class BiRotFillArc(var i : Int = 0) {
 
         private var curr : BRFANode = BRFANode(0)
         private var dir : Int = 1
@@ -192,6 +192,29 @@ class BiRotFillArcView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : BiRotFillArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val brfa : BiRotFillArc = BiRotFillArc(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            brfa.draw(canvas, paint)
+            animator.animate {
+                brfa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            brfa.startUpdating {
+                animator.start()
+            }
         }
     }
 }
