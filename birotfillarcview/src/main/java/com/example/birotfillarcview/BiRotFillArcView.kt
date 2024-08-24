@@ -219,4 +219,12 @@ class BiRotFillArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiRotFillArcView {
+            val view : BiRotFillArcView = BiRotFillArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
