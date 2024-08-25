@@ -46,7 +46,7 @@ fun Canvas.drawLineExpandSqRight(scale : Float, w : Float, h : Float, paint : Pa
             drawLine(0f, 0f, 0f, -size * dsc(0), paint)
         }
         drawXY(w * 0.5f * (1 - dsc(2)), size) {
-            drawLine(0f, 0f, 0f, size, paint)
+            drawLine(0f, 0f, size, 0f, paint)
         }
         drawRect(RectF(0f, size * (1 - dsc(3)), size, size), paint)
     }
