@@ -187,4 +187,27 @@ class LineExpandSqRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineExpandSqRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lesr : LineExpandSqRight = LineExpandSqRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lesr.draw(canvas, paint)
+            animator.animate {
+                lesr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lesr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
