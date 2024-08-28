@@ -214,4 +214,13 @@ class LineBiBentRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineBiBentRightView {
+            val view : LineBiBentRightView = LineBiBentRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
