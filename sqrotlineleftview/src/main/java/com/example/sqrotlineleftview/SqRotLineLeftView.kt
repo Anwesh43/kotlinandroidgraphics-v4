@@ -211,4 +211,12 @@ class SqRotLineLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : SqRotLineLeftView {
+            val view : SqRotLineLeftView = SqRotLineLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
