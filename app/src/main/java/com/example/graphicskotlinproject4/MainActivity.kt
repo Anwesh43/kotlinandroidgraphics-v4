@@ -11,12 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.linebibentrightview.LineBiBentRightView
+import com.example.sqrotlineleftview.SqRotLineLeftView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
-        LineBiBentRightView.create(this)
+        SqRotLineLeftView.create(this)
     }
 }
