@@ -209,4 +209,12 @@ class TurnRotLineDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : TurnRotLineDownView {
+            val view : TurnRotLineDownView = TurnRotLineDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
