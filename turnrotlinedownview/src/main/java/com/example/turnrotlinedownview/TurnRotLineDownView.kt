@@ -184,4 +184,27 @@ class TurnRotLineDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : TurnRotLineDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val trld : TurnRotLineDown = TurnRotLineDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            trld.draw(canvas, paint)
+            animator.animate {
+                trld.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            trld.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
