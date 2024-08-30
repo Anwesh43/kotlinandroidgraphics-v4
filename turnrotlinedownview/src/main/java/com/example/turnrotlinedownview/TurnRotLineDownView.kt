@@ -120,4 +120,45 @@ class TurnRotLineDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class TRLDNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : TRLDNode? = null
+        private var prev : TRLDNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = TRLDNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawTRLDNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : TRLDNode {
+            var curr : TRLDNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
