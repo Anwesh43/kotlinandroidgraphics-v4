@@ -213,4 +213,13 @@ class LineArcShutDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineArcShutDownView {
+            val view : LineArcShutDownView = LineArcShutDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
