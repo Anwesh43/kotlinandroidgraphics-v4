@@ -188,4 +188,27 @@ class LineArcShutDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineArcShutDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val lasd : LineArcShutDown = LineArcShutDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            lasd.draw(canvas, paint)
+            animator.animate {
+                lasd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lasd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
