@@ -10,12 +10,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.linearcshutdownview.LineArcShutDownView
+import com.example.arcrotagainlineview.ArcRotAgainLineView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
-        LineArcShutDownView.create(this)
+        ArcRotAgainLineView.create(this)
     }
 }
