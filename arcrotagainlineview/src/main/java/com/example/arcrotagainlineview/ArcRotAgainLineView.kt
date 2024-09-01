@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
+val parts : Int = 6
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 4.9f
@@ -41,8 +41,8 @@ fun Canvas.drawArcRotAgainLine(scale : Float, w : Float, h : Float, paint : Pain
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - (w / 2) * dsc(4), h / 2) {
-        rotate(deg * dsc(3))
+    drawXY(w / 2 - (w / 2) * dsc(5), h / 2) {
+        rotate(deg * dsc(4))
         drawLine(0f, 0f, -size * dsc(1), 0f, paint)
         drawXY(0f, 0f) {
             rotate(rot * dsc(2))
@@ -57,6 +57,7 @@ fun Canvas.drawARALNode(i : Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawArcRotAgainLine(scale, w, h, paint)
 }
 
