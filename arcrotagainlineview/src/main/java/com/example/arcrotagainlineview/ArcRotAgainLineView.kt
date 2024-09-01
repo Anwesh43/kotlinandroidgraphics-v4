@@ -186,4 +186,27 @@ class ArcRotAgainLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcRotAgainLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val aral : ArcRotAgainLine = ArcRotAgainLine(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aral.draw(canvas, paint)
+            animator.animate {
+                aral.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aral.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
