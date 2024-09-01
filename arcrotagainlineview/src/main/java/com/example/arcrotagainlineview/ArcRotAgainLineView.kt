@@ -211,4 +211,13 @@ class ArcRotAgainLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : ArcRotAgainLineView {
+            val view : ArcRotAgainLineView = ArcRotAgainLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
