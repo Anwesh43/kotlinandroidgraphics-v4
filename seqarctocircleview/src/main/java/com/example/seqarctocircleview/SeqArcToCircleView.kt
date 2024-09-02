@@ -101,7 +101,7 @@ class SeqArcToCircleView(ctx : Context) : View(ctx) {
 
     data class Animator(var view : View, var animated : Boolean = false) {
 
-        fun animated(cb : () -> Unit) {
+        fun animate(cb : () -> Unit) {
             if (animated) {
                 cb()
                 try {
@@ -189,5 +189,29 @@ class SeqArcToCircleView(ctx : Context) : View(ctx) {
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
         }
+    }
+
+    data class Renderer(var view : SeqArcToCircleView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val satc : SeqArcToCircle = SeqArcToCircle(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            satc.draw(canvas, paint)
+            animator.animate {
+                satc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            satc.startUpdating {
+                animator.start()
+            }
+        }
+
     }
 }
