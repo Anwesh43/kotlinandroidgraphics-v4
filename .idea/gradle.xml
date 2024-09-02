@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/arcleftlinecompleteview" />
             <option value="$PROJECT_DIR$/arclinecompletejoinview" />
+            <option value="$PROJECT_DIR$/arcrotagainlineview" />
             <option value="$PROJECT_DIR$/bentlinerotview" />
             <option value="$PROJECT_DIR$/biarcompleteview" />
             <option value="$PROJECT_DIR$/bilinedroprotview" />
@@ -54,6 +55,7 @@
             <option value="$PROJECT_DIR$/mirrorarclinedivideview" />
             <option value="$PROJECT_DIR$/rotarcquarterlineview" />
             <option value="$PROJECT_DIR$/rotwitharclineview" />
+            <option value="$PROJECT_DIR$/seqarctocircleview" />
             <option value="$PROJECT_DIR$/sqrotfromarcview" />
             <option value="$PROJECT_DIR$/sqrotlineleftview" />
             <option value="$PROJECT_DIR$/startcompleterotarcview" />
