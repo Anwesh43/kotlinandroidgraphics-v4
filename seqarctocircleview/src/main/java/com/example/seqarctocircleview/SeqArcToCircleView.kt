@@ -215,6 +215,13 @@ class SeqArcToCircleView(ctx : Context) : View(ctx) {
                 animator.start()
             }
         }
+    }
 
+    companion object {
+        fun create(activity : Activity) : SeqArcToCircleView {
+            val view : SeqArcToCircleView = SeqArcToCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
     }
 }
