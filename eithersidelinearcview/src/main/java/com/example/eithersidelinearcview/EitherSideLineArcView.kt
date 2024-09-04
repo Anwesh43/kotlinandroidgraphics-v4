@@ -193,4 +193,27 @@ class EitherSideLineArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : EitherSideLineArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val esla : EitherSideLineArc = EitherSideLineArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            esla.draw(canvas, paint)
+            animator.animate {
+                esla.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            esla.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
