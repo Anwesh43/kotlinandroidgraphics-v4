@@ -22,7 +22,7 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 4.9f
 val delay : Long = 20
 val backColor : Int = Color.parseColor("#BDBDBD")
-val rot : Float = 90f
+val rot : Float = 180f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -50,7 +50,7 @@ fun Canvas.drawEitherSideLineArc(scale : Float, w : Float, h : Float, paint : Pa
         for (j in 0..1) {
             drawXY(-size / 2 + size * j, 0f) {
                 rotate(rot * (2 * j - 1) * dsc(3))
-                drawXY(-size + size * j, 0f) {
+                drawXY(size * 0.5f * (-1 + j), 0f) {
                     drawLine(0f, 0f, size * 0.5f * dsc(j * 2), 0f, paint)
                 }
             }
@@ -63,7 +63,8 @@ fun Canvas.drawESLANode(i : Int, scale : Float, paint : Paint) {
     val h : Float = height.toFloat()
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
-    paint.strokeWidth = Math.min(w, h) / sizeFactor
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawEitherSideLineArc(scale, w, h, paint)
 }
 
