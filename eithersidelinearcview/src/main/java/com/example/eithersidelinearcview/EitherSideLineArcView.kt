@@ -218,4 +218,13 @@ class EitherSideLineArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : EitherSideLineArcView {
+            val view : EitherSideLineArcView = EitherSideLineArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
