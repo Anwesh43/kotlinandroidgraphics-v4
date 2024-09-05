@@ -190,4 +190,27 @@ class LineArcExtendRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineArcExtendRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val laer : LineArcExtendRot = LineArcExtendRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            laer.draw(canvas, paint)
+            animator.animate {
+                laer.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            laer.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
