@@ -10,12 +10,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.eithersidelinearcview.EitherSideLineArcView
+import com.example.linearcextendrotview.LineArcExtendRotView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
-        EitherSideLineArcView.create(this)
+        LineArcExtendRotView.create(this)
     }
 }
